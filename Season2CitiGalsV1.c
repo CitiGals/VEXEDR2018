@@ -32,69 +32,6 @@
 #define HALFPWR 63
 #define QTRPWR 32
 
-void sideDrive(int drivespd_direction, int time)
-{
-	//this function drives to the left or the right at a chosen speed
-	motor[rightTop] = drivespd_direction;
-	motor[leftBack] = -drivespd_direction;
-	wait1Msec(time); //1000 miliseconds is 1 second
-}
-
-void sideDriveGoal(int drivespd_direction, int time)
-{
-	//this function drives to the left or the right at a chosen speed
-	motor[rightTop] = drivespd_direction - 48;
-	motor[leftBack] = -drivespd_direction;
-	wait1Msec(time); //1000 miliseconds is 1 second
-	motor[rightTop] = 0;
-	motor[leftBack] = 0;
-}
-
-void frontDrive(int drivespd_direction, int time)
-{
-	//this function drives forward of backward at a chosen speed
-	motor[rightBack] = drivespd_direction;
-	motor[leftTop] = -drivespd_direction;
-	wait1Msec(time);
-	motor[rightTop] = 0;
-	motor[leftTop] = 0;
-}
-
-void turnNinetyNinety(int drivespd_direction, int time)
-{
-	motor[rightBack] = drivespd_direction - 10;
-	motor[leftBack] = drivespd_direction;
-	motor[rightTop] = drivespd_direction - 10;
-	motor[leftTop] = drivespd_direction - 10;
-	wait1Msec(time);
-}
-
-void winchWind (int spd)
-{
-	motor[leftWinch] = spd;
-	motor[rightWinch] = -spd;
-	wait1Msec(1000); //still have to find out how long it takes to lift the scissor lift
-}
-
-void mobileLiftUp (int spd, int time)
-{
-	motor[mobileLift] = spd;
-	winchWind(spd);
-	wait1Msec(time);
-
-}
-
-void armDown(int speed)
-{
-	motor[claw] = speed;
-	wait1Msec(1000);
-}
-
-void clawOpen(int speed)
-{
-	motor [arm] = speed;
-	wait1Msec(500);
-}
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */

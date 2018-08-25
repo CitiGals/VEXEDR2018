@@ -66,19 +66,8 @@ void pre_auton()
 
 task autonomous()
 {
-	/*
-	//frontDrive(FULLPWR, 9000);
-	//code to close the claw first thing
-	mobileLiftUp(-FULLPWR,550);
-	frontDrive(HALFPWR, 5500);
-	mobileLiftUp(FULLPWR, 200);
-	armDown(FULLPWR);
-	clawOpen(-FULLPWR);
 
-	frontDrive(-HALFPWR, 4000);
-	// move diagonally for abt 2-3 sec
-	sideDrive(HALFPWR, 4000);
-	*/
+
 }
 
 /*---------------------------------------------------------------------------*/
@@ -102,11 +91,11 @@ task usercontrol()
     //motor power levels range from -127 (full reverse) to 0 (stopped) to 127 (full power)
 
     //sets each of the wheel/chassis motors to a channel on the joystick
-		motor[leftWheel] =  CHTWO;
+		motor[leftWheel] =  -CHTWO;
 		motor[rightWheel] =  CHTWO;
 		motor[middleWheel] =  CHONE;
 
-		//claw moves one direction when button 7D pressed
+	/*	//claw moves one direction when button 7D pressed
 		if (vexRT[Btn7D] == 1)
 		{
 			motor[claw] = HALFPWR; //motor forward for about half power
@@ -165,6 +154,6 @@ task usercontrol()
 		{
 			motor[leftWinch] = 0;
 			motor[rightWinch] = 0;
-		}
+		} */
   }
 }

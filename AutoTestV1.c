@@ -26,22 +26,23 @@ task main()
 		displayNextLCDString("Sonar: ");
 		displayNextLCDNumber(sonar_value);
 
-		if(sonar_value < 0)
+		if(sonar_value < 0) //out of range of object
 		{
 			speed = 127;
 		}
-		else
+		else //There is something there and the robot is using this formula to correct it
 		{
 			speed = (sonar_value - distance)*2;
 		}
-
+		//clearing out everything
 		clearLCDLine(1);
 		displayLCDPos(1,0);
 		displayNextLCDString("Speed: ");
 		displayNextLCDNumber(speed);
-
+		//assigning speeds to the motors
 		motor[leftWheel] = speed;
 		motor[rightWheel] = speed;
+		motor[middleWheel] = speed;
 
 		wait1Msec(100);
 	}

@@ -13,6 +13,36 @@
 
 task main()
 {
-	//main function
+	int speed;
+	int sonar_value;
+	int distance = 25;
 
+	while(true)
+	{
+		sonar_value = SensorValue(sonicSensor);
+
+		clearLCDLine(0);
+		displayLCDPos(0,0);
+		displayNextLCDString("Sonar: ");
+		displayNextLCDNumber(sonar_value);
+
+		if(sonar_value < 0)
+		{
+			speed = 127;
+		}
+		else
+		{
+			speed = (sonar_value - distance)*2;
+		}
+
+		clearLCDLine(1);
+		displayLCDPos(1,0);
+		displayNextLCDString("Speed: ");
+		displayNextLCDNumber(speed);
+
+		motor[leftWheel] = speed;
+		motor[rightWheel] = speed;
+
+		wait1Msec(100);
+	}
 }

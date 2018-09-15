@@ -21,14 +21,7 @@ task main()
 	{
 		sonar_value = SensorValue(sonicSensor);
 
-<<<<<<< HEAD
-		clearLCDLine(0)
-		displayLCDPos(0,0);
-		displayNextLCDString("Sonar: ");
-		displayNextLCDNumber(sonar_value);
 
-=======
->>>>>>> 95d077aad2f0e7282c8ed0a26490aba67e979c37
 		if(sonar_value < 0) //out of range of object
 		{
 			speed = 127;

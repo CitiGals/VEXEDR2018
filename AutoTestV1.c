@@ -21,6 +21,7 @@ task main()
 	{
 		sonar_value = SensorValue(sonicSensor);
 
+
 		if(sonar_value < 0) //out of range of object
 		{
 			speed = 127;

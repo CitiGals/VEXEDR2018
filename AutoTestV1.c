@@ -33,7 +33,6 @@ task main()
 		//assigning speeds to the motors
 		motor[leftWheel] = speed;
 		motor[rightWheel] = speed;
-		motor[middleWheel] = speed;
 
 		wait1Msec(100);
 	}

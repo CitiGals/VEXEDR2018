@@ -21,7 +21,7 @@ task main()
 	{
 		sonar_value = SensorValue(sonicSensor);
 
-		clearLCDLine(0);
+		clearLCDLine(0)
 		displayLCDPos(0,0);
 		displayNextLCDString("Sonar: ");
 		displayNextLCDNumber(sonar_value);

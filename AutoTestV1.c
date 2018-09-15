@@ -21,11 +21,6 @@ task main()
 	{
 		sonar_value = SensorValue(sonicSensor);
 
-		clearLCDLine(0);
-		displayLCDPos(0,0);
-		displayNextLCDString("Sonar: ");
-		displayNextLCDNumber(sonar_value);
-
 		if(sonar_value < 0) //out of range of object
 		{
 			speed = 127;
@@ -34,11 +29,7 @@ task main()
 		{
 			speed = (sonar_value - distance)*2;
 		}
-		//clearing out everything
-		clearLCDLine(1);
-		displayLCDPos(1,0);
-		displayNextLCDString("Speed: ");
-		displayNextLCDNumber(speed);
+
 		//assigning speeds to the motors
 		motor[leftWheel] = speed;
 		motor[rightWheel] = speed;

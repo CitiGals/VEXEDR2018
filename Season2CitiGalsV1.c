@@ -145,52 +145,5 @@ task usercontrol()
 
 
 
-/*
-  	//arm moves one direction when button 6D pressed
-		if (vexRT[Btn6D] == 1)
-		{
-				motor[arm] = -HALFPWR; //motor forward for about half power
-		}
-		else if (vexRT[Btn6U] == 1)
-	  {
-	  		motor[arm] = HALFPWR; //arm moves in opposite direction when button 6U pressed
-  	}
-		else
-		{
-			motor [arm] = 0;
-  	}
-
-
-  	//goal lift
-  	if (vexRT [Btn5U] == 1)
-    {
-    	motor[mobileLift] = HALFPWR;
-    }
-    else if (vexRT[Btn5D] == 1)
-    {
-    	motor[mobileLift] = -HALFPWR;
-		}
-		else
-		{
-			motor[mobileLift] = 0;
-		}
-
-
-  	//controlls the winding up and unwinding of the winch
-  	if (vexRT [Btn7U] == 1)
-    {
-    	motor[leftWinch] = HALFPWR;
-    	motor[rightWinch] = -HALFPWR;
-    }
-    else if (vexRT[Btn7R] == 1)
-    {
-    	motor[leftWinch] = -QTRPWR;
-    	motor[rightWinch] = QTRPWR;
-		}
-		else
-		{
-			motor[leftWinch] = 0;
-			motor[rightWinch] = 0;
-		} */
   }
 }

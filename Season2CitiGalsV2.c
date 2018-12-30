@@ -154,11 +154,25 @@ task usercontrol()
   	//claw control
   	if ( vexRT[Btn7U] == 1)
   	{
-  		motor[claw] = FULLPWR;
+  		//go backward
+  		resetTimer(T1);
+  		while (time1[T1] < 375) //for 3/4 of half a second
+  		{
+  			motor[leftWheel] = FULLPWR;
+  			motor[rightWheel] = -FULLPWR;
+  		}
+
+  		//use claw to flip
+  		resetTimer(T1);
+  		while (time1[T1] < 500) //for half a second
+  		{
+  			motor[claw] = -FULLPWR;
+  		}
+
   	}
   	else if (vexRT[Btn7D] == 1)
   	{
-  		motor[claw] = -FULLPWR;
+  		motor[claw] = FULLPWR;
   	}
   	else
   	{

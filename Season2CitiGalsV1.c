@@ -154,11 +154,11 @@ task usercontrol()
   	//claw control
   	if ( vexRT[Btn7U] == 1)
   	{
-  		motor[claw] = FULLPWR;
+  		motor[claw] = -FULLPWR;
   	}
   	else if (vexRT[Btn7D] == 1)
   	{
-  		motor[claw] = -FULLPWR;
+  		motor[claw] = FULLPWR;
   	}
   	else
   	{

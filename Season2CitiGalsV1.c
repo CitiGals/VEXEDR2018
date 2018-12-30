@@ -1,3 +1,4 @@
+#pragma config(Motor,  port1,           claw,          tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           rightWheel,    tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           middleWheel,   tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port4,           leftWheel,     tmotorVex393_MC29, openLoop)
@@ -31,6 +32,12 @@
 #define FULLPWR 127
 #define HALFPWR 63
 #define QTRPWR 32
+
+
+
+
+
+
 
 
 /*---------------------------------------------------------------------------*/
@@ -140,6 +147,22 @@ task usercontrol()
   	{
   		motor[ballShootLeft] = 0;
   		motor[ballShootRight] = 0;
+  	}
+
+
+
+  	//claw control
+  	if ( vexRT[Btn7U] == 1)
+  	{
+  		motor[claw] = FULLPWR;
+  	}
+  	else if (vexRT[Btn7D] == 1)
+  	{
+  		motor[claw] = -FULLPWR;
+  	}
+  	else
+  	{
+  		motor[claw] = 0;
   	}
 
 

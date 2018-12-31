@@ -106,7 +106,18 @@ task usercontrol()
     //sets each of the wheel/chassis motors to a channel on the joystick
 		motor[leftWheel] =  -CHTWO;
 		motor[rightWheel] =  CHTWO;
-		motor[middleWheel] =  CHONE;
+		//straifing
+		motor[middleWheel] =  CHFOUR;
+		//turning
+		if (vexRT[Btn8U] == 1)
+		{
+			motor[leftWheel] = FULLPWR;
+		//motor[rightWheel] = CHTHREE;
+		}
+		else if (vexRT[Btn8R] == 1)
+		{
+			motor[leftWheel] = -FULLPWR;
+		}
 
 
 		//turbine/intake control

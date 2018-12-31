@@ -107,17 +107,19 @@ task usercontrol()
 		motor[leftWheel] =  -CHTWO;
 		motor[rightWheel] =  CHTWO;
 		//straifing
-		motor[middleWheel] =  CHFOUR;
+		motor[middleWheel] = CHFOUR;
+
 		//turning
-		if (vexRT[Btn8U] == 1)
+		if (vexRT[Btn7L] == 1)
 		{
 			motor[leftWheel] = FULLPWR;
 		//motor[rightWheel] = CHTHREE;
 		}
-		else if (vexRT[Btn8R] == 1)
+		else if (vexRT[Btn7D] == 1)
 		{
 			motor[leftWheel] = -FULLPWR;
 		}
+
 
 
 		//turbine/intake control
@@ -181,7 +183,7 @@ task usercontrol()
   		}
 
   	}
-  	else if (vexRT[Btn7D] == 1)
+  	else if (vexRT[Btn7R] == 1)
   	{
   		motor[claw] = FULLPWR;
   	}

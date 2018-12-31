@@ -113,14 +113,14 @@ task usercontrol()
 		if (vexRT[Btn8D] == 1)
 		{
 			//turn turbines in the forward direction to intake balls
-			motor[turbine1] = FULLPWR;
+			motor[turbine1] = -FULLPWR;
 			motor[turbine2] = FULLPWR; //the motor is already flipped on the bot
 			motor[turbine3] = -FULLPWR;
 		}
 		else if (vexRT[Btn8L] == 1)
 	  {
 	  	//turn turbines in the opposite direction to spit any balls out
-		 motor[turbine1] = -FULLPWR;
+		 motor[turbine1] = FULLPWR;
 		 motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
 		 motor[turbine3] = FULLPWR;
   	}

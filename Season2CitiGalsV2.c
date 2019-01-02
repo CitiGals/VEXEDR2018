@@ -1,3 +1,5 @@
+#pragma config(Sensor, in1,    lineTrackFront, sensorLineFollower)
+#pragma config(Sensor, in2,    lineTrackBack,  sensorLineFollower)
 #pragma config(Motor,  port1,           claw,          tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           rightWheel,    tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           middleWheel,   tmotorVex393_MC29, openLoop)
@@ -123,16 +125,14 @@ task usercontrol()
 
 
 		//turbine/intake control
-		if (vexRT[Btn8D] == 1)
+		if (vexRT[Btn8D] == 1) //sucks out
 		{
-			//turn turbines in the forward direction to intake balls
 			motor[turbine1] = FULLPWR;
 			motor[turbine2] = FULLPWR; //the motor is already flipped on the bot
 			motor[turbine3] = -FULLPWR;
 		}
-		else if (vexRT[Btn8L] == 1)
+		else if (vexRT[Btn8L] == 1) //sucks in/intake
 	  {
-	  	//turn turbines in the opposite direction to spit any balls out
 		 motor[turbine1] = -FULLPWR;
 		 motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
 		 motor[turbine3] = FULLPWR;

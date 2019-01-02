@@ -128,13 +128,13 @@ task usercontrol()
 		//turbine/intake control
 		if (vexRT[Btn8D] == 1) //sucks out
 		{
-			motor[turbine1] = FULLPWR;
+			motor[turbine1] = HALFPWR;
 			motor[turbine2] = FULLPWR; //the motor is already flipped on the bot
 			motor[turbine3] = -FULLPWR;
 		}
 		else if (vexRT[Btn8L] == 1) //sucks in/intake
 	  {
-		 motor[turbine1] = -FULLPWR;
+		 motor[turbine1] = -HALFPWR;
 		 motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
 		 motor[turbine3] = FULLPWR;
   	}
@@ -150,12 +150,12 @@ task usercontrol()
   	if( vexRT[Btn5U] == 1 || vexRT[Btn6U] == 1)
     {
     	motor[ballShootLeft] = FULLPWR;
-    	motor[ballShootRight] = FULLPWR;
+    	motor[ballShootRight] = -FULLPWR;
     }
     else if ( vexRT[Btn5D] == 1 || vexRT[Btn6D] == 1)
     {
     	motor[ballShootLeft] = -FULLPWR;
-    	motor[ballShootRight] = -FULLPWR;
+    	motor[ballShootRight] = FULLPWR;
   	}
   	else
   	{

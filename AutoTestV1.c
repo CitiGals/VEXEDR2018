@@ -18,19 +18,30 @@
 
 //create functions up here
 
-//begins ball shooting sequence. MUST INCLUDE TIMING IN MAIN METHOD (or code into the ballShoot later)
+//begins ball shooting sequence NO TIMING NECESSARY
 void ballShoot()
 {
-	//turns turbines in the intake direction
-	motor[turbine1] = -FULLPWR;
-	motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
-	motor[turbine3] = FULLPWR;
+  //go backward
+  resetTimer(T1);
+  while (time1[T1] < 375) //for 3/4 of half a second
+  {
+  	//turns turbines in the intake direction
+		motor[turbine1] = -FULLPWR;
+		motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
+		motor[turbine3] = FULLPWR;
+  }
 
-	//shoots balls
-	//TEST IF THIS IS IN THE RIGHT DIRECTION OR NOT
-	motor[ballShootLeft] = FULLPWR;
-  motor[ballShootRight] = FULLPWR;
+  //use claw to flip
+  resetTimer(T1);
+  while (time1[T1] < 500) //for half a second
+  {
+  	//shoots balls
+		motor[ballShootLeft] = FULLPWR;
+  	motor[ballShootRight] = -FULLPWR;
+  }
 }
+
+
 
 //begins cap flipping sequence when called NO TIMING NECESSARY
 void capFlip()

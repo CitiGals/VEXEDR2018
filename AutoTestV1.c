@@ -19,6 +19,7 @@
 //create functions up here
 
 //begins ball shooting sequence NO TIMING NECESSARY
+//Timing must be tested
 void ballShoot()
 {
   //go backward
@@ -66,5 +67,40 @@ void capFlip()
 
 task main()
 {
+ int threshold = 50; // light sensor threshold
+
+ //starif over to the line
+ motor[middleWheel] = HALFPWR;
+
+ while(SensorValue(LightSensor) < threshold) //when light
+ {
+   //set straif to 0 and go full power along the line
+   motor[middleWheel] = 0;
+ 	motor[rightWheel]= FULLPWR;
+ 	motor[leftWheel]= FULLPWR;
+ }
+
+ //when the end of the line is reached or no line is sensed, go forward for half a second
+ motor[rightWheel]= HALFPWR;
+ motor[leftWheel]= HALFPWR;
+ wait1Msec(500);
+
+ //set all wheels to 0, stopping in front of the flags
+ motor[rightWheel] = 0;
+ motor[leftWheel] = 0;
+ motor[middleWheel] = 0;
+
+ //shoots the ball
+ ballShoot();
+
+ //go forward to align with the cap for half a second
+ motor[rightWheel] = HALFPWR;
+ motor[leftWheel] = HALFPWR;
+ wait1Msec(500);
+
+ //sense the cap with the ultrasonic range finder
+
+
+
 
 }

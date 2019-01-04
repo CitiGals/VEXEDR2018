@@ -1,5 +1,7 @@
 #pragma config(Sensor, in1,    lineTrackFront, sensorLineFollower)
 #pragma config(Sensor, in2,    lineTrackBack,  sensorLineFollower)
+#pragma config(Sensor, dgtl1,  ultrasonicIN,   sensorSONAR_cm)
+#pragma config(Sensor, dgtl3,  button,         sensorTouch)
 #pragma config(Motor,  port1,           claw,          tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           rightWheel,    tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           middleWheel,   tmotorVex393_MC29, openLoop)
@@ -65,14 +67,48 @@ void capFlip()
 
 
 
+void spinLeft()
+{
+	//spins left for half a second before coming to a stop
+	motor[leftWheel] = -FULLPWR;
+	motor[rightWheel] = FULLPWR;
+	wait1Msec(500);
+
+	motor[leftWheel] = 0;
+	motor[rightWheel] = 0;
+}
+
+void spinRight()
+{
+	//spins right for half a second before coming to a stop
+	motor[leftWheel] = FULLPWR;
+	motor[rightWheel] = -FULLPWR;
+	wait1Msec(500);
+
+	motor[leftWheel] = 0;
+	motor[rightWheel] = 0;
+}
+
+
+
 task main()
 {
- int threshold = 50; // light sensor threshold
+ int thresholdLine = 50; // light sensor threshold
 
- //starif over to the line
+ int capDist = 50; //ultrasonic range finder threshold
+ int wallDist = 50;
+
+ //straif to the right for 3/4 of half a second
  motor[middleWheel] = HALFPWR;
+ wait1Msec(375);
 
- while(SensorValue(LightSensor) < threshold) //when light
+
+ if (SensorValue[button] == 1) //straif to the left until the while loop is triggered
+ {
+ 		motor[middleWheel] = HALFPWR;
+}
+
+ while(SensorValue[lineTrackFront] < thresholdLine || SensorValue[lineTrackBack] < thresholdLine) //when light
  {
    //set straif to 0 and go full power along the line
    motor[middleWheel] = 0;
@@ -99,6 +135,19 @@ task main()
  wait1Msec(500);
 
  //sense the cap with the ultrasonic range finder
+ if (SensorValue[ultrasonicIN] > wallDist) //if the range finder senses the wall, spin left
+ {
+   spinLeft();
+	}
+	else if (SensorValue[ultrasonicIN] > capDist) //if the range finder senses the cap, spin right
+	{
+		spinRight();
+	}
+
+
+	//now that we are in position, flip the cap
+	capFlip();
+
 
 
 

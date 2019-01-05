@@ -149,13 +149,13 @@ task usercontrol()
   	//ball shooter control
   	if( vexRT[Btn5U] == 1 || vexRT[Btn6U] == 1)
     {
-    	motor[ballShootLeft] = FULLPWR;
+    	motor[ballShootLeft] = -FULLPWR;  //changed from negative to positive, change both left and right to negative if it doesnt work
     	motor[ballShootRight] = -FULLPWR;
     }
     else if ( vexRT[Btn5D] == 1 || vexRT[Btn6D] == 1)
     {
-    	motor[ballShootLeft] = -FULLPWR;
-    	motor[ballShootRight] = FULLPWR;
+    	motor[ballShootLeft] = -FULLPWR; //changed from negative to positive change both left and right to negative if it doesnt work
+    	motor[ballShootRight] = -FULLPWR;
   	}
   	else
   	{

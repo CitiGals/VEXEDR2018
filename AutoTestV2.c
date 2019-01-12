@@ -23,13 +23,32 @@
 
 task main()
 {
+	//going forward
 	motor[leftWheel] = -FULLPWR;
 	motor[rightWheel] = FULLPWR;
 	wait1Msec(5000);
 
+	//stops to hit flag
 	motor[leftWheel] = 0;
 	motor[rightWheel] = 0;
+	wait1Msec(1000);
 
+	//backs up from flag
+	motor[leftWheel] = FULLPWR;
+	motor[rightWheel] = -FULLPWR;
+	wait1Msec(4000);
+
+	//turn towards cap
+	motor[leftWheel] = FULLPWR;
+	motor[rightWheel] = FULLPWR;
+	wait1Msec(1500);
+
+	//move forward to cap
+	motor[leftWheel] = -FULLPWR;
+	motor[rightWheel] = FULLPWR;
+	wait1Msec(2000);
+
+	//flip cap
 	motor[claw] = FULLPWR;
 	wait1Msec(1000);
 

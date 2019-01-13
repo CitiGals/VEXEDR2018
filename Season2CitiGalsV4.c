@@ -190,12 +190,17 @@ task usercontrol()
 
     //int rightPwr = CHTWO * .54;
     //sets each of the wheel/chassis motors to a channel on the joystick
-		motor[leftWheel] =  CHTWO;
-		motor[rightWheel] =  -CHTWO;
+
+  	motor[leftWheel] =  CHTWO;
+		motor[rightWheel] =  -CHTHREE;
+
+
 		//straifing
 		//motor[middleWheel] = -CHFOUR;
 
+
 		//turning
+			/*
 		if (vexRT[Btn7L] == 1)
 		{
 			motor[leftWheel] = -FULLPWR;
@@ -207,7 +212,7 @@ task usercontrol()
 			motor[leftWheel] = FULLPWR;
 			motor[rightWheel] = FULLPWR;
 		}
-
+	*/
 
 
 		//turbine/intake control

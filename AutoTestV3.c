@@ -33,25 +33,29 @@ task main()
 	motor[rightWheel] = 0;
 	wait1Msec(1000);
 
-	motor[claw] = -FULLPWR;
-	wait1Msec(500);
-	motor[claw] = 0;
-	wait1Msec(1);
-
 	//backs up from flag
 	motor[leftWheel] = -FULLPWR;
 	motor[rightWheel] = FULLPWR;
-	wait1Msec(1900);
+//	motor[claw] = -FULLPWR;
+	wait1Msec(1850);
 
 	//turn towards cap
 	motor[leftWheel] = FULLPWR;
 	motor[rightWheel] = FULLPWR;
-	wait1Msec(800);
+	//wait1Msec(800);
+	wait1Msec(200);
+
+	//flip claw down
+	motor[claw] = FULLPWR;
+	wait1Msec(1000);
+
+	motor[claw] = 0;
+	wait1Msec(500);
 
 	//move forward to cap
 	motor[leftWheel] = FULLPWR;
 	motor[rightWheel] = -FULLPWR;
-	wait1Msec(1200);
+	wait1Msec(1000);
 
 	motor[leftWheel] = 0;
 	motor[rightWheel] = 0;
@@ -59,12 +63,5 @@ task main()
 
 	//flip cap
 	motor[claw] = -FULLPWR;
-	wait1Msec(3000);
-
-	motor[claw] = 0;
-	wait1Msec(500);
-
-
-
-
+	wait1Msec(1000);
 }

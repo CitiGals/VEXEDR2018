@@ -1,6 +1,3 @@
-#pragma config(Sensor, in1,    lineTrackFront, sensorLineFollower)
-#pragma config(Sensor, in2,    lineTrackBack,  sensorLineFollower)
-#pragma config(Sensor, dgtl1,  ultrasonicIN,   sensorSONAR_inch)
 #pragma config(Motor,  port1,           claw,          tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           rightWheel,    tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           leftWheel,     tmotorVex393_MC29, openLoop)
@@ -35,81 +32,6 @@
 #define FULLPWR 127
 #define HALFPWR 63
 #define QTRPWR 32
-
-
-//create functions up here
-
-//begins ball shooting sequence NO TIMING NECESSARY
-//Timing must be tested
-void ballShoot()
-{
-  //go backward
-  resetTimer(T1);
-  while (time1[T1] < 375) //for 3/4 of half a second
-  {
-  	//turns turbines in the intake direction
-		motor[turbine1] = -FULLPWR;
-		motor[turbine2] = -FULLPWR; //the motor is already flipped on the bot
-		motor[turbine3] = FULLPWR;
-  }
-
-  //use claw to flip
-  resetTimer(T1);
-  while (time1[T1] < 500) //for half a second
-  {
-  	//shoots balls
-	//	motor[ballShootLeft] = FULLPWR;
-  //	motor[ballShootRight] = -FULLPWR;
-  }
-}
-
-
-
-//begins cap flipping sequence when called NO TIMING NECESSARY
-void capFlip()
-{
-	//go backward
-  resetTimer(T1);
-  while (time1[T1] < 375) //for 3/4 of half a second
-  {
-  	motor[leftWheel] = FULLPWR;
-  	motor[rightWheel] = -FULLPWR;
-  }
-
-  //use claw to flip
-  resetTimer(T1);
-  while (time1[T1] < 500) //for half a second
-  {
-  	motor[claw] = -FULLPWR;
-  }
-}
-
-
-
-void spinLeft()
-{
-	//spins left for half a second before coming to a stop
-	motor[leftWheel] = FULLPWR;
-	motor[rightWheel] = FULLPWR;
-	wait1Msec(500);
-
-	motor[leftWheel] = 0;
-	motor[rightWheel] = 0;
-}
-
-void spinRight()
-{
-	//spins right for half a second before coming to a stop
-	motor[leftWheel] = FULLPWR;
-	motor[rightWheel] = FULLPWR;
-	wait1Msec(500);
-
-	motor[leftWheel] = 0;
-	motor[rightWheel] = 0;
-}
-
-
-
 
 
 /*---------------------------------------------------------------------------*/
@@ -198,22 +120,6 @@ task usercontrol()
 		//motor[middleWheel] = -CHFOUR;
 
 
-		//turning
-			/*
-		if (vexRT[Btn7L] == 1)
-		{
-			motor[leftWheel] = -FULLPWR;
-			motor[rightWheel] = -FULLPWR;
-		//motor[rightWheel] = CHTHREE;
-		}
-		else if (vexRT[Btn7D] == 1)
-		{
-			motor[leftWheel] = FULLPWR;
-			motor[rightWheel] = FULLPWR;
-		}
-	*/
-
-
 		//turbine/intake control
 		if (vexRT[Btn8D] == 1) //sucks out
 		{
@@ -283,23 +189,6 @@ task usercontrol()
   	{
   		motor[claw] = 0;
   	}
-
-  	/*
-  	//catapult REWRITTEN FOR THE CLAW
-  	if(vexRT[Btn5D] == 1)
-  	{
-  		motor[claw] = FULLPWR;
-  	}
-  	else if(vexRT[Btn6D] == 1)
-  	{
-  		motor[claw] = -FULLPWR;
-  	}
-  	else
-  	{
-  		motor[claw] = 0;
-  	}
-		*/
-
 
   }
 }
